@@ -11,6 +11,7 @@ import 'hammerjs';
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
+import { LeaderService } from './services/leader.service'
 
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -45,7 +46,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatButtonModule,
     AppRoutingModule
   ],
-  providers: [DishService],
+  providers: [
+    DishService,
+    LeaderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
