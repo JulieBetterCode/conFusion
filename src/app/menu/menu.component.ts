@@ -11,7 +11,7 @@ import { DishService } from '../services/dish.service';
 
 export class MenuComponent implements OnInit {
 
-  dishes = DISHES;
+  dishes;
 
   selectedDish: Dish;
 
@@ -19,7 +19,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.dishService.getDishes().then(dishes => this.dishes = dishes);
-    console.log(this.dishes);
   }
 
   onSelect(dish: Dish) {
