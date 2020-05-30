@@ -36,15 +36,28 @@
 
   <div fxFlex="40" *ngIf="dish">
     <h2>Comments</h2>
-    <mat-list >
+    <mat-list>
       <mat-list-item *ngFor="let comment of dish.comments">
         <h1 matLine> {{comment.comment}} </h1>
         <h1 matLine> {{comment.rating}} Stars</h1>
         <h1 matLine> -- {{comment.author}} {{timeTransfer(comment.date)}}</h1>
       </mat-list-item>
     </mat-list>
-  </div>
 
+    <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+          <input matInput formControlName="author" placeholder="Name" type="text">
+        </mat-form-field>
+        <mat-slider [max]=5 [min]=1 [step]=1 thumbLabel formControlName="rating" (change)="testF()"></mat-slider>
+        <p>
+          <mat-form-field class="full-width">
+            <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12></textarea>
+          </mat-form-field>
+        </p>
+      <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+    </form>
+  </div>
+  
   <div fxFlex [hidden]="dish">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
